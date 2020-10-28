@@ -1,5 +1,6 @@
 
 import LoginModel from '../../models/login';
+import passport from 'passport';
 
 export default function _(router: any) {
 
@@ -26,13 +27,13 @@ export default function _(router: any) {
      *
      * Failed authentications will go back to the login page with a helpful error message to be displayed.
      */
-    router.post('/', function (req: any, res: any) {
+    router.post('/auth', function (req: any, res: any) {
 
-        // passport.authenticate('local', {
-        //     successRedirect: req.session.goingTo || '/profile',
-        //     failureRedirect: '/login',
-        //     failureFlash: true
-        // })(req, res);
+        passport.authenticate('local', {
+            successRedirect: req.session.goingTo || '/profile',
+            failureRedirect: '/login',
+            failureFlash: true
+        })(req, res);
 
     });
 
