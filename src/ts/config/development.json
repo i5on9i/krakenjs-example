@@ -57,6 +57,22 @@
         //         ]
         //     }
         // }
+        "appsec": {
+            "enabled": true,
+            "priority": 110,
+            "module": {
+                "name": "lusca",
+                "arguments": [
+                    {
+                        "csrf": false,
+                        "xssProtection": true,
+                        "xframe": "SAMEORIGIN",
+                        "p3p": false,
+                        "csp": false
+                    }
+                ]
+            }
+        }
     },
 
     "database": {
