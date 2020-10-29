@@ -7,7 +7,11 @@ import Users from "../models/users";
 export default function spec(app: any) {
     app.on('middleware:after:session', function configPassport(eventargs: any) {
         //Tell passport to use our newly created local strategy for authentication
-        passport.use(new Strategy(
+        passport.use(
+            new Strategy({
+                usernameField: 'login_id',
+                passwordField: 'password'
+            },
             async function (username, password, done) {
                 const authUser = await Users.query().findOne({
                     login_id: username,

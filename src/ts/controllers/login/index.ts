@@ -35,6 +35,7 @@ export default function _(router: any) {
             failureFlash: true
         })(req, res);
 
+        console.log(req.flash('error'));
     });
 
 
