@@ -56,7 +56,29 @@
         //         ]
         //     }
         // },
-        
+        "session": {
+            "module": {
+                "name": "path:./lib/middleware/redis-session",
+                "method": "conRedis",
+                "arguments": [
+                    {
+                        "key": "",
+                        "secret": "80bc6d67f80813ccc78ff77adf0eefcafa7eeef6",
+                        "cookie": {
+                            "path": "/",
+                            "httpOnly": true,
+                            "maxAge": null
+                        },
+                        "proxy": null
+                    },
+                    {
+                        "host": "192.168.0.26",
+                        "port": 6379
+                    }
+                ]
+            }
+            
+        },
 
         "static": {
             "module": {
