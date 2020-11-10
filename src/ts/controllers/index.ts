@@ -11,6 +11,7 @@ export default function _ (router: any){
         
         res.send('<code><pre>' + JSON.stringify(model, null, 2) + '</pre></code>');
         // res.render('index', model);
+        // res.json({})
         
         
     });	
