@@ -30,9 +30,12 @@ export default function _(router: any) {
                 console.error(error.data);
                 console.log(req.flash('error'));
             }
+<<<<<<< HEAD
             res.status(400)
             res.send(`validation error : ${JSON.stringify(error.data)}`);
             return;
+=======
+>>>>>>> 6b7f028684f35e73d3205673c9ce2bf0928ab1a9
         }
 
         // res.render("index");
