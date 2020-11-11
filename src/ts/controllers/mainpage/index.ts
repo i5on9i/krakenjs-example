@@ -1,20 +1,25 @@
 
 import Products from '../../models/product/products';
 import { ValidationError } from 'objection';
+import permit from '../../lib/middleware/authorization';
 
 export default function _(router: any) {
 
-
+    router.use((req: any, res: any, next: any) => {
+        if (req.isAuthenticated()) {
+            res.status(401).send("Not authorized!");
+        } else {
+            next();
+        }
+    })
 
     /**
      * Display the login page. We also want to display any error messages that result from a failed login attempt.
      *
      * curl -X PATCH -H "Content-Type: application/json" -d "{\"show_order\":\"1a\"" }" http://localhost:8000/mainpage/update-show-order
      */
-    router.patch('/update-show-order', async function (req: any, res: any) {
+    router.patch('/update-show-order', permit('admin'), async function (req: any, res: any) {
 
-        // About Flash messages
-        // - https://gist.github.com/brianmacarthur/a4e3e0093d368aa8e423
 
 
         //Include any error messages that come from the login process.
@@ -30,12 +35,9 @@ export default function _(router: any) {
                 console.error(error.data);
                 console.log(req.flash('error'));
             }
-<<<<<<< HEAD
             res.status(400)
             res.send(`validation error : ${JSON.stringify(error.data)}`);
             return;
-=======
->>>>>>> 6b7f028684f35e73d3205673c9ce2bf0928ab1a9
         }
 
         // res.render("index");
